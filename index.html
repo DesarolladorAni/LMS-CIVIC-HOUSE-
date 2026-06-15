@@ -10,123 +10,385 @@
         :root {
             --navy: #0A2540;
             --green: #00C896;
-            --bg-color: #f4f7f9;
+            --bg-color: #f8fafc;
             --text-main: #1e293b;
             --text-muted: #64748b;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; padding-bottom: 50px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-        /* Navbar */
-        .navbar { background-color: white; padding: 1.2rem 5%; display: flex; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .logo { font-weight: 700; font-size: 1.2rem; color: var(--navy); display: flex; align-items: center; gap: 10px; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-        /* Container */
-        .container { max-width: 700px; margin: 3rem auto; padding: 0 20px; }
-        h1 { margin-bottom: 2rem; color: var(--navy); font-size: 1.8rem; }
+        /* Top Navigation */
+        .navbar {
+            background-color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-        /* Timeline / Cards Styling */
-        .timeline-wrapper { position: relative; }
-        
-        .timeline-item { display: flex; gap: 25px; margin-bottom: 25px; position: relative; }
-        
-        /* Línea vertical */
-        .timeline-wrapper::before { content: ''; position: absolute; left: 19px; top: 0; bottom: 0; width: 2px; background: #e2e8f0; z-index: 0; }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--navy);
+        }
 
-        .step-number { width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; z-index: 1; flex-shrink: 0; box-shadow: 0 0 0 4px var(--bg-color); }
-        .locked .step-number { background: #cbd5e1; }
+        .brand i {
+            color: var(--green);
+            font-size: 1.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--navy);
+            border-bottom: 2px solid var(--green);
+            padding-bottom: 4px;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--navy);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--navy);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 200, 150, 0.1) 0%, transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Timeline / Journey Layout */
+        .journey-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 20px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        /* Linea conectora */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 70px;
+            bottom: -30px;
+            width: 3px;
+            background-color: #e2e8f0;
+            z-index: 1;
+        }
         
-        /* Card Panel */
-        .course-card { background: white; padding: 1.5rem; border-radius: 16px; border: 1px solid #e2e8f0; flex-grow: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.03); transition: all 0.3s ease; }
-        .locked .course-card { opacity: 0.85; border-style: dashed; }
-        
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-        .card-header h2 { font-size: 1.15rem; color: var(--navy); }
-        
-        .meta-tags { display: flex; gap: 10px; margin-top: 5px; }
-        .tag { font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; background: #f1f5f9; color: var(--text-muted); font-weight: 500; }
-        
-        .description { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-        
-        .btn { display: inline-block; padding: 0.6rem 1.4rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
-        .btn-active { background: var(--navy); color: white; }
-        .btn-active:hover { background: #1e3a5f; }
-        .btn-locked { background: #f8fafc; color: #94a3b8; border: 1px solid #e2e8f0; cursor: not-allowed; }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        /* Círculo numérico */
+        .step-number {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: white;
+            border: 3px solid var(--green);
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            z-index: 2;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,200,150,0.2);
+        }
+
+        .timeline-item.locked .step-number {
+            border-color: #cbd5e1;
+            color: #cbd5e1;
+            background-color: #f1f5f9;
+        }
+
+        /* Tarjeta de curso */
+        .course-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            flex-grow: 1;
+            border: 1px solid #f1f5f9;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .timeline-item.locked .course-card {
+            opacity: 0.7;
+            background: #f8fafc;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-header h2 {
+            font-size: 1.4rem;
+            color: var(--navy);
+        }
+
+        .meta-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            background-color: #f1f5f9;
+            color: var(--text-muted);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tag.time { color: #d97706; background-color: #fef3c7; }
+        .tag.status { color: var(--navy); background-color: #ccfbf1; }
+
+        .description {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .action-area {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--green);
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background-color: #00b386;
+        }
+
+        .btn-locked {
+            background-color: #e2e8f0;
+            color: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 4rem;
+        }
+        .social-icons { margin-bottom: 1rem; }
+        .social-icons i { margin: 0 10px; font-size: 1.5rem; color: var(--navy); }
+
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo"><i class="fa-solid fa-house-chimney-user" style="color: var(--green);"></i> Civic House | Learning Journey</div>
+        <div class="brand">
+            <i class="fa-solid fa-earth-americas"></i>
+            Civic House Hub
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Mi Ruta</a></li>
+            <li><a href="#">Catálogo</a></li>
+            <li><a href="#">Comunidad</a></li>
+        </ul>
+        <div class="user-menu">
+            <div style="text-align: right;">
+                <div style="font-weight: 600; font-size: 0.9rem; color: var(--navy);">Juan Martín - Gestión de Proyectos</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Nueva Incorporación</div>
+            </div>
+            <div class="avatar">JM</div>
+        </div>
     </nav>
 
-    <div class="container">
-        <h1>Tu Ruta de Aprendizaje</h1>
+    <header class="hero">
+        <h1>Tu Camino de Aprendizaje</h1>
+        <p>Sigue esta ruta paso a paso para integrarte al 100% en la cultura y operaciones de Civic House.</p>
+    </header>
 
-        <div class="timeline-wrapper">
-            <div class="timeline-item">
-                <div class="step-number">1</div>
-                <div class="course-card">
-                    <div class="card-header">
-                        <div>
-                            <h2>Onboarding Operativo</h2>
-                            <div class="meta-tags"><span class="tag"><i class="fa-regular fa-clock"></i> 90 min</span></div>
+    <main class="journey-container">
+        
+        <div class="timeline-item">
+            <div class="step-number">1</div>
+            <div class="course-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Onboarding Operativo</h2>
+                        <div class="meta-tags">
+                            <span class="tag time"><i class="fa-regular fa-clock"></i> 90 min</span>
+                            <span class="tag status"><i class="fa-solid fa-play"></i> En curso</span>
                         </div>
-                        <i class="fa-solid fa-rocket" style="color: var(--green); font-size: 1.2rem;"></i>
                     </div>
-                    <p class="description">Configuración de herramientas (Slack, correos), procesos administrativos y primeros pasos operativos.</p>
-                    <a href="#" class="btn btn-active">Continuar</a>
+                    <i class="fa-solid fa-rocket" style="font-size: 2rem; color: var(--green);"></i>
+                </div>
+                <p class="description">Configuración de herramientas (<i>Slack</i>, correos, plataformas), procesos administrativos y primeros pasos operativos.</p>
+                <div class="action-area">
+                    <a href="#" class="btn btn-primary">Continuar Módulo <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
+        </div>
 
-            <div class="timeline-item locked">
-                <div class="step-number">2</div>
-                <div class="course-card">
-                    <div class="card-header">
-                        <div>
-                            <h2>Políticas Internas</h2>
-                            <div class="meta-tags"><span class="tag"><i class="fa-regular fa-clock"></i> 40 min</span></div>
+        <div class="timeline-item locked">
+            <div class="step-number"><i class="fa-solid fa-lock" style="font-size: 1.2rem;"></i></div>
+            <div class="course-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Políticas Internas</h2>
+                        <div class="meta-tags">
+                            <span class="tag time"><i class="fa-regular fa-clock"></i> 40 min</span>
+                            <span class="tag"><i class="fa-solid fa-lock"></i> Bloqueado</span>
                         </div>
-                        <i class="fa-solid fa-scale-balanced" style="color: #94a3b8; font-size: 1.2rem;"></i>
                     </div>
-                    <p class="description">Normativas de ética, manual de convivencia y protocolos de cumplimiento.</p>
-                    <a href="#" class="btn btn-locked">Bloqueado</a>
+                    <i class="fa-solid fa-scale-balanced" style="font-size: 2rem; color: #cbd5e1;"></i>
+                </div>
+                <p class="description">Accedé a nuestros protocolos internos, códigos de conducta y guías de <i>compliance</i>.</p>
+                <div class="action-area">
+                    <a href="#" class="btn btn-locked">Completa el paso 1</a>
                 </div>
             </div>
+        </div>
 
-            <div class="timeline-item locked">
-                <div class="step-number">3</div>
-                <div class="course-card">
-                    <div class="card-header">
-                        <div>
-                            <h2>Cultura Organizacional</h2>
-                            <div class="meta-tags"><span class="tag"><i class="fa-regular fa-clock"></i> 60 min</span></div>
+        <div class="timeline-item locked">
+            <div class="step-number"><i class="fa-solid fa-lock" style="font-size: 1.2rem;"></i></div>
+            <div class="course-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Cultura Organizacional</h2>
+                        <div class="meta-tags">
+                            <span class="tag time"><i class="fa-regular fa-clock"></i> 60 min</span>
                         </div>
-                        <i class="fa-solid fa-users" style="color: #94a3b8; font-size: 1.2rem;"></i>
                     </div>
-                    <p class="description">Nuestros valores, propósito compartido, forma de trabajo y dinámica de equipo.</p>
-                    <a href="#" class="btn btn-locked">Bloqueado</a>
+                    <i class="fa-solid fa-users" style="font-size: 2rem; color: #cbd5e1;"></i>
                 </div>
-            </div>
-
-            <div class="timeline-item locked">
-                <div class="step-number">4</div>
-                <div class="course-card">
-                    <div class="card-header">
-                        <div>
-                            <h2>Identidad Organizacional</h2>
-                            <div class="meta-tags"><span class="tag"><i class="fa-regular fa-clock"></i> 60 min</span></div>
-                        </div>
-                        <i class="fa-solid fa-fingerprint" style="color: #94a3b8; font-size: 1.2rem;"></i>
-                    </div>
-                    <p class="description">Ecosistema <i>Res Non Verba</i>: mapa de marcas, visión y colaboración estratégica.</p>
+                <p class="description">Sumérgete en nuestros valores, nuestra forma de trabajar en equipo y cómo fomentamos la innovación cívica diaria.</p>
+                <div class="action-area">
                     <a href="#" class="btn btn-locked">Bloqueado</a>
                 </div>
             </div>
         </div>
 
-    </div>
+        <div class="timeline-item locked">
+            <div class="step-number"><i class="fa-solid fa-lock" style="font-size: 1.2rem;"></i></div>
+            <div class="course-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Identidad Organizacional</h2>
+                        <div class="meta-tags">
+                            <span class="tag time"><i class="fa-regular fa-clock"></i> 30 min</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-fingerprint" style="font-size: 2rem; color: #cbd5e1;"></i>
+                </div>
+                <p class="description">Descubrí nuestro ADN compartido y cómo nuestras marcas integran el ecosistema <i>Res Non Verba</i>.</p>
+                <div class="action-area">
+                    <a href="#" class="btn btn-locked">Bloqueado</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <i class="fab fa-instagram"></i><i class="fab fa-linkedin"></i><i class="fab fa-twitter"></i><i class="fab fa-facebook"></i><i class="fab fa-youtube"></i>
+        </div>
+        <p>© 2026 Civic House - Res Non Verba Asociación Civil. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
