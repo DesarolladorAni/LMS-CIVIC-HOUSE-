@@ -32,7 +32,7 @@
         .locked .step-number { background: #e2e8f0; color: var(--text-muted); }
         
         .course-card { background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0; flex-grow: 1; transition: 0.3s; }
-        .locked .course-card { opacity: 0.7; }
+        .locked .course-card { opacity: 0.8; }
         
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
         .card-header h2 { font-size: 1.1rem; color: var(--navy); }
@@ -60,27 +60,57 @@
             <div class="course-card">
                 <div class="card-header">
                     <div>
-                        <h2>Onboarding</h2>
+                        <h2>Onboarding Operativo</h2>
                         <div class="meta-tags"><span class="tag"><i class="fa-regular fa-clock"></i> 90 min</span></div>
                     </div>
                     <i class="fa-solid fa-rocket" style="color: var(--green);"></i>
                 </div>
-                <p class="description">Configuración de herramientas (Slack, correos, plataformas), procesos administrativos y primeros pasos operativos.</p>
+                <p class="description">Configuración de herramientas y primeros pasos operativos.</p>
                 <div class="action-area"><a href="#" class="btn btn-active">Continuar</a></div>
             </div>
         </div>
 
         <div class="timeline-item locked">
-            <div class="step-number"><i class="fa-solid fa-lock"></i></div>
+            <div class="step-number">2</div>
             <div class="course-card">
                 <div class="card-header">
                     <div>
                         <h2>Políticas Internas</h2>
                         <div class="meta-tags"><span class="tag"><i class="fa-regular fa-clock"></i> 40 min</span></div>
                     </div>
-                    <i class="fa-solid fa-scale-balanced" style="color: #cbd5e1;"></i>
+                    <i class="fa-solid fa-scale-balanced" style="color: var(--text-muted);"></i>
                 </div>
-                <p class="description">Normativas de ética, manual de convivencia y protocolos de seguridad.</p>
+                <p class="description">Normativas de ética, manual de convivencia y protocolos de cumplimiento.</p>
+                <div class="action-area"><a href="#" class="btn btn-locked">Bloqueado</a></div>
+            </div>
+        </div>
+
+        <div class="timeline-item locked">
+            <div class="step-number">3</div>
+            <div class="course-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Cultura Organizacional</h2>
+                        <div class="meta-tags"><span class="tag"><i class="fa-regular fa-clock"></i> 60 min</span></div>
+                    </div>
+                    <i class="fa-solid fa-users" style="color: var(--text-muted);"></i>
+                </div>
+                <p class="description">Nuestros valores, forma de trabajo y dinámica de equipo.</p>
+                <div class="action-area"><a href="#" class="btn btn-locked">Bloqueado</a></div>
+            </div>
+        </div>
+
+        <div class="timeline-item locked">
+            <div class="step-number">4</div>
+            <div class="course-card">
+                <div class="card-header">
+                    <div>
+                        <h2>Identidad Organizacional</h2>
+                        <div class="meta-tags"><span class="tag"><i class="fa-regular fa-clock"></i> 60 min</span></div>
+                    </div>
+                    <i class="fa-solid fa-fingerprint" style="color: var(--text-muted);"></i>
+                </div>
+                <p class="description">Ecosistema <i>Res Non Verba</i>: mapa de marcas y colaboración estratégica.</p>
                 <div class="action-area"><a href="#" class="btn btn-locked">Bloqueado</a></div>
             </div>
         </div>
